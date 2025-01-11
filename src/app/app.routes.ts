@@ -12,8 +12,11 @@ export const routes: Routes = [
     title: 'Favorites',
   },
   {
-    path: 'photos/:id',
-    loadComponent: () => import('./pages/photo-view/photo-view.component').then(m => m.PhotoViewComponent),
+    path: 'favorites/:id',
+    loadComponent: () =>
+      import('./pages/photo-view/photo-view.component').then(
+        (m) => m.PhotoViewComponent
+      ),
     resolve: { photo: photoIdResolver },
     providers: [PhotoViewService],
   },

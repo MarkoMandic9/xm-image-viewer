@@ -7,12 +7,15 @@
     rel="noopener noreferrer"
   >
     <img
-      [style.view-transition-name]="'img-' + image.id"
       [ngSrc]="'https://picsum.photos/id/' + image.id + '/600/700'"
-      fill
       alt="Optimized Image"
       priority
+      fill
     />
+    <div
+      class="view-transition-target"
+      [style.view-transition-name]="'img-' + image.id"
+    ></div>
   </a>
   <button
     mat-flat-button

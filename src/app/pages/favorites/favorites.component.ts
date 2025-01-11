@@ -22,6 +22,6 @@ export class FavoritesComponent {
   }
 
   onImageClick(imageId: string): void {
-    this.router.navigate(['/photos', imageId]);
+    this.router.navigate(['/favorites', imageId]);
   }
 }
