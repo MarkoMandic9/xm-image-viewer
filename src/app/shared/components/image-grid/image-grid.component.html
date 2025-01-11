@@ -1,10 +1,18 @@
+@if (!loading() && imagesMetaData()?.length === 0){
+<app-no-elements-panel>
+</app-no-elements-panel>
+} @else {
 <div class="grid-container">
   @for (imageMetaData of imagesMetaData(); track imageMetaData.id) {
-  <app-image-grid-item
-    [style.view-transition-name]="'img-' + imageMetaData.id"
-    [addToFavoritesEnabled]="addToFavoritesEnabled()"
-    [imageData]="imageMetaData"
-    (imageClick)="imageClick.emit($event)"
-  ></app-image-grid-item>
-  } @empty { There are no items. }
+  <app-image-grid-item [style.view-transition-name]="'img-' + imageMetaData.id"
+    [addToFavoritesEnabled]="addToFavoritesEnabled()" [imageData]="imageMetaData"
+    (imageClick)="imageClick.emit($event)"></app-image-grid-item>
+  }
 </div>
+}
+
+@if (true){
+<div class="loading-container">
+  <mat-spinner></mat-spinner>
+</div>
+}

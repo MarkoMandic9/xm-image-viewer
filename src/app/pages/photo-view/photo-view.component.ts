@@ -3,7 +3,6 @@ import { PhotoViewService } from './photo-view.service';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { ImageMetadata } from '../../shared/interface/image-metadata.interface';
 
 @Component({
   selector: 'app-photo-view',

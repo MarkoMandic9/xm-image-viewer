@@ -16,6 +16,7 @@ export class MainListComponent implements OnInit {
   private mainListService = inject(MainListService);
 
   readonly images: Signal<ImageMetadata[]> = this.mainListService.images;
+  readonly loading: Signal<boolean> = this.mainListService.loading;
 
   private readonly pageScrollService = inject(PageScrollService);
   private readonly destroyRef = inject(DestroyRef);
@@ -27,9 +28,9 @@ export class MainListComponent implements OnInit {
   }
 
   trackPageScroll(): void {
-    this.pageScrollService.pageScroll$.pipe(
-      takeUntilDestroyed(this.destroyRef),
-    ).subscribe(() => this.mainListService.loadNextPage());
+   this.pageScrollService.pageScroll$.pipe(
+     takeUntilDestroyed(this.destroyRef),
+   ).subscribe(() => this.mainListService.loadNextPage());
   }
 
   onImageClick(id: string): void {
