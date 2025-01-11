@@ -18,10 +18,6 @@ export class PhotoViewComponent {
 
   readonly image = this.photoViewService.image;
 
-  onImageClick(imageData: ImageMetadata): void {
-    window.location.href = imageData.fullUrl;
-  }
-
   onRemoveBtnClick(id: string): void {
     this.photoViewService.removeFromFavorites(id);
     this.router.navigate(['/favorites']);

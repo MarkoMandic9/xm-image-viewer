@@ -1,7 +1,10 @@
 <ng-container *ngIf="image() as image">
     <div class="image-wrapper">
-        <img [ngSrc]="'https://picsum.photos/id/' + image.id + '/600/700'" [width]="600" [height]="700"
-            alt="Optimized Image" (click)="onImageClick(image)" priority />
-            <button (click)="onRemoveBtnClick(image.id)" mat-flat-button>Remove from favorites</button>
+        <a [href]="image.fullUrl" target="_blank" rel="noopener noreferrer">
+            <img [ngSrc]="'https://picsum.photos/id/' + image.id + '/600/700'" [width]="600" [height]="700"
+                alt="Optimized Image" priority />
+        </a>
+
+        <button (click)="onRemoveBtnClick(image.id)" mat-flat-button>Remove from favorites</button>
     </div>
 </ng-container>
