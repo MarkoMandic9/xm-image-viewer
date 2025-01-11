@@ -1,39 +1,39 @@
-import { Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { debounceTime, filter, fromEvent, Subscription } from 'rxjs';
+import { Directive, ElementRef, inject } from '@angular/core';
+import { outputFromObservable } from '@angular/core/rxjs-interop';
+import { debounceTime, filter, fromEvent, map, tap } from 'rxjs';
+
+const SCROLL_OFFSET = 0.8;
 
 @Directive({
-    selector: '[appInfiniteScroll]',
+    selector: '[infiniteScroll]',
     standalone: true,
 })
-export class InfiniteScrollDirective implements OnDestroy {
-    @Input() disabled = false;
-    @Input() triggerOffset = 50;
-    @Output() nextPage = new EventEmitter<void>();
-    @Output() previousPage = new EventEmitter<void>();
+export class InfiniteScrollDirective {
+    private readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
+    private readonly scrolledTriggers = new Set();
 
-    onScrollEvent: Subscription;
+    readonly infiniteScroll = outputFromObservable(
+        fromEvent(this.elementRef.nativeElement, 'scroll').pipe(
+            debounceTime(200),
+            filter(() => this.isScrolled && !this.scrolledTriggers.has(this.scrollHeight)),
+            tap(() => this.scrolledTriggers.add(this.scrollHeight)),
+            map(() => true),
+        )
+    );
 
-    constructor(private elementRef: ElementRef<HTMLElement>) {
-        this.onScrollEvent = fromEvent(elementRef.nativeElement, 'wheel')
-            .pipe(
-                filter(() => !this.disabled),
-                debounceTime(200)
-            )
-            .subscribe(() => {
-                this.pagination();
-            });
+    private get scrollHeight(): number {
+        return this.elementRef.nativeElement.scrollHeight;
     }
 
-    ngOnDestroy(): void {
-        this.onScrollEvent.unsubscribe();
+    private get clientHeight(): number {
+        return this.elementRef.nativeElement.clientHeight;
     }
 
-    private pagination(): void {
-        if (
-            this.elementRef.nativeElement.scrollTop >=
-            this.elementRef.nativeElement.scrollHeight - this.elementRef.nativeElement.clientHeight - this.triggerOffset
-        ) {
-            this.nextPage.emit();
-        }
+    private get scrollTop(): number {
+        return this.elementRef.nativeElement.scrollTop;
+    }
+
+    private get isScrolled(): boolean {
+        return this.scrollTop >= (this.scrollHeight - this.clientHeight) * SCROLL_OFFSET; 
     }
 }

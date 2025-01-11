@@ -11,9 +11,9 @@ import { InfiniteScrollDirective } from '../directive/infinite-scroll.directive'
   styleUrls: ['./image-grid.component.scss'],
 })
 export class ImageGridComponent {
-  imagesMetaData = input<ImageMetadata[]>();
-  nextPage = output<void>();
-  imageClick = output<string>();
+  readonly imagesMetaData = input<ImageMetadata[]>();
+  readonly nextPage = output<void>();
+  readonly imageClick = output<string>();
 
   onNextPageLoad(): void {
     this.nextPage.emit();

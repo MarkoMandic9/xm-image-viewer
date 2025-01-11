@@ -1,4 +1,4 @@
-<div class="grid-container" appInfiniteScroll (nextPage)="onNextPageLoad()">
+<div class="grid-container" (infiniteScroll)="onNextPageLoad()">
   @for (imageMetaData of imagesMetaData(); track imageMetaData.id) {
   <app-image-details
     [imageData]="imageMetaData"
