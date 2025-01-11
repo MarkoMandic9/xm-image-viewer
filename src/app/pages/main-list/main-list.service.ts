@@ -1,7 +1,7 @@
 import { inject, Injectable, Signal } from "@angular/core";
 import { ImageMetadata } from "../../shared/interface/image-metadata.interface";
 import { ImageMetadataService } from "../../shared/service/image-metadata.service";
-import { BehaviorSubject, concatMap, scan } from "rxjs";
+import { BehaviorSubject, concatMap, filter, scan } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { StorageService } from "../../shared/service/storage.service";
 import { FAVORITES_STORAGE_PATH, IMAGE_PAGE_SIZE } from "../../shared/constants";
@@ -11,9 +11,10 @@ export class MainListService {
     private imageMetadataService = inject(ImageMetadataService);
     private storageService = inject(StorageService);
 
-    private pageIndex$ = new BehaviorSubject<number>(0);
+    private pageIndex$ = new BehaviorSubject<number>(-1);
 
     private imageList = toSignal(this.pageIndex$.pipe(
+        filter((index) => index >= 0),
         concatMap((index) => this.imageMetadataService.getMetadata(index, IMAGE_PAGE_SIZE)),
         scan((loadedImages, imagePage) => [...loadedImages, ...imagePage]),
     ), {initialValue: []});
