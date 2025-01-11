@@ -17,9 +17,4 @@ export class FavoritesService {
         this.favoritesList.set(this.storageService.getObject(FAVORITES_STORAGE_PATH) ?? []);
     }
 
-    removeFromFavorites(id: string): void {
-        const filteredMetadata = this.storageService.update<ImageMetadata[]>(id, 
-            (favorites) => favorites.filter(({id: imageId}) => id !== imageId));
-        this.favoritesList.set(filteredMetadata ?? []);
-    }
 }
