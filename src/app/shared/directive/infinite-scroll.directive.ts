@@ -9,9 +9,8 @@ const SCROLL_OFFSET = 0.8;
     standalone: true,
 })
 export class InfiniteScrollDirective {
-    private elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
-
-    private scrolledTriggers = new Set();
+    private readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
+    private readonly scrolledTriggers = new Set();
 
     readonly infiniteScroll = outputFromObservable(
         fromEvent(this.elementRef.nativeElement, 'scroll').pipe(
