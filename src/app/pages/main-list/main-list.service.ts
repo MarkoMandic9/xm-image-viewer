@@ -26,7 +26,7 @@ export class MainListService {
     readonly error = toSignal(this.imagePage$.pipe(
             catchError(() => of(true)),
             map(() => false),
-        ), {initialValue: false});
+        ), { initialValue: false });
 
     readonly loading = toSignal(
         merge(
@@ -35,7 +35,7 @@ export class MainListService {
         ).pipe(
             scan((loadingItemCount, increment) => loadingItemCount + increment, 0),
             map((pageRequests) => pageRequests > 0),
-        )
+        ), { initialValue: false }
     );
 
     private get imageMap(): Map<string, ImageMetadata> {

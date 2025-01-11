@@ -4,7 +4,7 @@ import { StorageService } from "../../shared/service/storage.service";
 import { FAVORITES_STORAGE_PATH } from "../../shared/constants";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { ImageMetadataService } from "../../shared/service/image-metadata.service";
-import { of, Subject, switchMap } from "rxjs";
+import { catchError, map, merge, of, Subject, switchMap } from "rxjs";
 
 @Injectable()
 export class PhotoViewService {
@@ -13,27 +13,33 @@ export class PhotoViewService {
 
     private readonly selectedImageId$ = new Subject<string | undefined>();
 
-    private readonly selectedImage = toSignal(
-        this.selectedImageId$.pipe(
-            switchMap((id) => {
-                if (id == null) {
-                    return of(undefined);
-                }
+    private readonly selectedImage$ = this.selectedImageId$.pipe(
+        switchMap((id) => {
+            if (id == null) {
+                return of(undefined);
+            }
 
-                const storageItem = this.loadImageFromStorage(id);
+            const storageItem = this.loadImageFromStorage(id);
 
-                if (storageItem != null) {
-                    return of(storageItem);
-                }
-            
-                return this.imageMetadataService.getImageData(id);
-            }),
-        )
+            if (storageItem != null) {
+                return of(storageItem);
+            }
+        
+            return this.imageMetadataService.getImageData(id);
+        }),
     );
 
-    get image(): Signal<ImageMetadata | undefined> {
-        return this.selectedImage;
-    }
+    readonly image = toSignal(this.selectedImage$);
+
+    readonly loading = toSignal(merge(
+        this.selectedImageId$.pipe(map(() => true)),
+        this.selectedImage$.pipe(map(() => false)),
+    ), { initialValue: false });
+
+    readonly error = toSignal(this.selectedImage$.pipe(
+        catchError(() => of(true)),
+        map(() => false),
+    ), {initialValue: false});
 
     selectImage(id: string): void {
         this.selectedImageId$.next(id);
