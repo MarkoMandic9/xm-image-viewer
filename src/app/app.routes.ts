@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { photoIdResolver } from './pages/photo-view/photo-view-id.resolver';
+import { PhotoViewService } from './pages/photo-view/photo-view.service';
 
 export const routes: Routes = [
   {
@@ -11,11 +13,9 @@ export const routes: Routes = [
   },
   {
     path: 'photos/:id',
-    loadComponent: () =>
-      import('./pages/photo-view/photo-view.component').then(
-        (m) => m.PhotoViewComponent
-      ),
-    title: 'Photo details',
+    loadComponent: () => import('./pages/photo-view/photo-view.component').then(m => m.PhotoViewComponent),
+    resolve: { photo: photoIdResolver },
+    providers: [PhotoViewService],
   },
   {
     path: '',

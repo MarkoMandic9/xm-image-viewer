@@ -1,4 +1,4 @@
-import { inject, Injectable, Signal, signal } from "@angular/core";
+import { inject, Injectable  } from "@angular/core";
 import { ImageMetadata } from "../../shared/interface/image-metadata.interface";
 import { StorageService } from "../../shared/service/storage.service";
 import { FAVORITES_STORAGE_PATH } from "../../shared/constants";
@@ -46,7 +46,7 @@ export class PhotoViewService {
     }
     
     removeFromFavorites(id: string): void {
-        this.storageService.update<ImageMetadata[]>(id, 
+        this.storageService.update<ImageMetadata[]>(FAVORITES_STORAGE_PATH, 
             (favorites) => favorites.filter(({id: imageId}) => id !== imageId));
     }
 
