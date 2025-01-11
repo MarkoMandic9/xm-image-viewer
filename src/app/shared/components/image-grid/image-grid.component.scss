@@ -1,13 +1,7 @@
 :host {
-  display: block;
-  height: 100%;
-
   .grid-container {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
     display: grid;
-    grid: 300px / repeat(auto-fill, 200px);
+    grid: auto-flow 300px / repeat(auto-fill, 200px);
     align-items: stretch;
     justify-content: center;
   }

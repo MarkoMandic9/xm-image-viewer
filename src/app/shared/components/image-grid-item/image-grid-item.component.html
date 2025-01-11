@@ -1,17 +1,15 @@
-<div class="image-container">
-  <div class="image-wrapper" (click)="onImageClick(imageData()?.id)">
-    <img
-      [ngSrc]="'https://picsum.photos/id/' + imageData()?.id + '/200/300'"
-      [width]="200"
-      [height]="300"
-      alt="Optimized Image"
-      [priority]="imageData()?.id"
-    />
-    <mat-icon
-      *ngIf="addToFavoritesEnabled() && isFavorite"
-      [class.animate]="isFavorite"
-      class="favorite-icon"
-      >favorite</mat-icon
-    >
-  </div>
+<div class="image-wrapper" (click)="onImageClick(imageData()?.id)">
+  <img
+    [ngSrc]="'https://picsum.photos/id/' + imageData()?.id + '/200/300'"
+    [width]="200"
+    [height]="300"
+    alt="Optimized Image"
+    [priority]="imageData()?.id"
+  />
+  <mat-icon
+    *ngIf="addToFavoritesEnabled() && isFavorite"
+    [class.animate]="isFavorite"
+    class="favorite-icon"
+    >favorite</mat-icon
+  >
 </div>
