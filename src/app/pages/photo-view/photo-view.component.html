@@ -1,18 +1,26 @@
-<ng-container *ngIf="image() as image">
-  <div class="image-wrapper">
-    <a [href]="image.fullUrl" target="_blank" rel="noopener noreferrer">
-      <img
-        [style.view-transition-name]="'img-' + image.id"
-        [ngSrc]="'https://picsum.photos/id/' + image.id + '/600/700'"
-        [width]="600"
-        [height]="700"
-        alt="Optimized Image"
-        priority
-      />
-    </a>
+@if (image(); as image) {
+<div class="photo-view">
+  <a
+    class="image-link-wrapper"
+    [href]="image.fullUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      [style.view-transition-name]="'img-' + image.id"
+      [ngSrc]="'https://picsum.photos/id/' + image.id + '/600/700'"
+      fill
+      alt="Optimized Image"
+      priority
+    />
+  </a>
+  <button
+    mat-flat-button
+    class="remove-from-fav-btn"
+    (click)="onRemoveBtnClick(image.id)"
+  >
+    Remove from favorites
+  </button>
+</div>
 
-    <button (click)="onRemoveBtnClick(image.id)" mat-flat-button>
-      Remove from favorites
-    </button>
-  </div>
-</ng-container>
+}

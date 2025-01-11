@@ -1,23 +1,27 @@
-:host{
-    .image-wrapper{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 32px;
-        padding-top: 20px;
+:host {
+  display: block;
+  height: 100%;
+  .photo-view {
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-        img {
-            width: 600px;
-            height: 700px;
-            object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+    .image-link-wrapper {
+      flex: 1 1;
+      display: block;
+      position: relative;
+      cursor: pointer;
 
-            &:hover {
-                transform: scale(1.05);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            }
-        }
+      img {
+        object-fit: contain;
+      }
     }
+
+    .remove-from-fav-btn {
+      align-self: center;
+      height: 48px;
+    }
+  }
 }
