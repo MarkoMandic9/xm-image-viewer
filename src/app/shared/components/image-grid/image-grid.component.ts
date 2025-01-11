@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, Input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { ImageGridItemComponent } from '../image-grid-item/image-grid-item.component';
 import { CommonModule } from '@angular/common';
 import { ImageMetadata } from '../../interface/image-metadata.interface';
@@ -12,5 +12,6 @@ import { ImageMetadata } from '../../interface/image-metadata.interface';
 })
 export class ImageGridComponent {
   readonly imagesMetaData = input<ImageMetadata[]>();
+  readonly addToFavoritesEnabled = input<boolean>(false);
   readonly imageClick = output<string>();
 }

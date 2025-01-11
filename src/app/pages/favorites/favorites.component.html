@@ -1,1 +1,5 @@
-<app-image-grid [imagesMetaData]="images()"></app-image-grid>
+<app-image-grid
+  [addToFavoritesEnabled]="false"
+  [imagesMetaData]="images()"
+  (imageClick)="onImageClick($event)"
+></app-image-grid>

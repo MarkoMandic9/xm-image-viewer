@@ -1,87 +1,67 @@
 :host {
-    content-visibility: auto;
-    
-    .image-container {
-        position: relative;
-        display: inline-block;
+  content-visibility: auto;
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .buttons {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 10;
+    gap: 10px;
+
+    button {
+      font-size: 12px;
+      padding: 6px 12px;
     }
+  }
 
-    .image-wrapper {
-        position: relative;
-        display: inline-block;
+  &:hover .buttons {
+    display: flex;
+  }
 
-        img {
-            width: 200px;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+  .favorite-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    color: white;
+    pointer-events: none;
+    text-shadow: 0 0 15px #0002, /* Bright red glow */ 0 0 30px #0003,
+      /* Larger soft glow */ 0 0 45px #0005;
+    /* Subtle outer glow */
+    border-radius: 1rem;
 
-            &:hover {
-                transform: scale(1.05);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            }
-        }
-
-        .buttons {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 0;
-            z-index: 10;
-            gap: 10px;
-
-            button {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-        }
-
-        &:hover .buttons {
-            display: flex;
-        }
-
-        .favorite-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-            color: white;
-            pointer-events: none;
-            text-shadow: 0 0 15px #0002,
-                /* Bright red glow */
-                0 0 30px #0003,
-                /* Larger soft glow */
-                0 0 45px #0005;
-            /* Subtle outer glow */
-            border-radius: 1rem;
-
-            &.animate {
-                animation: pop-and-fade 1s ease forwards;
-            }
-        }
+    &.animate {
+      animation: pop-and-fade 1s ease forwards;
     }
+  }
 }
 
 /* Keyframes for pop and fade animation */
 @keyframes pop-and-fade {
-    0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
-    }
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
 
-    30% {
-        transform: translate(-50%, -50%) scale(3);
-        opacity: 1;
-    }
+  30% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+  }
 
-    60% {
-        transform: translate(-50%, -50%) scale(1.5);
-    }
+  60% {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
 
-    100% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
-    }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
 }

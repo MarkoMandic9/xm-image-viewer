@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FavoritesService } from './favorites.service';
-import { NgOptimizedImage } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ImageGridComponent } from '../../shared/components/image-grid/image-grid.component';
 
 @Component({
@@ -12,10 +11,15 @@ import { ImageGridComponent } from '../../shared/components/image-grid/image-gri
   providers: [FavoritesService],
 })
 export class FavoritesComponent {
-  private favoritesService = inject(FavoritesService);
+  private readonly favoritesService = inject(FavoritesService);
+  private readonly router = inject(Router);
   readonly images = this.favoritesService.images;
 
   constructor() {
     this.favoritesService.loadFavorites();
+  }
+
+  onImageClick(id: string): void {
+    this.router.navigate(['/photos', id]);
   }
 }
