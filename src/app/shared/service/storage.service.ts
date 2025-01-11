@@ -18,12 +18,13 @@ export class StorageService {
         localStorage.setItem(key, JSON.stringify(value));
     }
 
-    update<T>(key: string, callback: (item: T) => void): boolean {
+    update<T>(key: string, callback: (item: T) => T): T | undefined {
         const object = this.getObject<T>(key);
-        if (object == null) return false;
+        if (object == null) return undefined;
 
-        this.storeObject(key, callback(object));
+        const updatedObject = callback(object);
+        this.storeObject(key, updatedObject);
 
-        return true;
+        return updatedObject;
     }
 }
