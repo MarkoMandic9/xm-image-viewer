@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, Signal } from '@angular/core';
-import { ImageGridComponent } from '../../shared/image-grid/image-grid.component';
+import { ImageGridComponent } from '../../shared/components/image-grid/image-grid.component';
 import { ImageMetadata } from '../../shared/interface/image-metadata.interface';
 import { MainListService } from './main-list.service';
 import { StorageService } from '../../shared/service/storage.service';

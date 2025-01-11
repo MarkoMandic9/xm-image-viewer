@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FavoritesService } from './favorites.service';
 import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ImageGridComponent } from '../../shared/image-grid/image-grid.component';
+import { ImageGridComponent } from '../../shared/components/image-grid/image-grid.component';
 
 @Component({
   selector: 'app-favorites',

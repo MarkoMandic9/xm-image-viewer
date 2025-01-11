@@ -52,6 +52,8 @@ export class MainListService {
     }
 
     addToFavorites(id: string): boolean {
+        if (this.isImageFavorite(id)) return false;
+
         const image = this.getImage(id);
         if (image == null) return false;
 
@@ -62,6 +64,10 @@ export class MainListService {
 
     private getImage(id: string): ImageMetadata | undefined {
         return this.imageMap.get(id);
+    }
+    
+    private isImageFavorite(id: string): boolean {
+        return !!this.storageService.find<ImageMetadata>(FAVORITES_STORAGE_PATH, ({id: imgId}) => imgId === id);
     }
 
 } 

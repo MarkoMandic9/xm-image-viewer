@@ -9,8 +9,9 @@ export class StorageService {
         return JSON.parse(storageItem) as T;
     }
 
-    find<T>(key: string, callback: (item: T) => boolean) {
+    find<T>(key: string, callback: (item: T) => boolean): T | undefined {
         const objects = this.getObject<T[]>(key) ?? [];
+        if (objects == null) return undefined;
         return objects.find(callback);
     }
 
