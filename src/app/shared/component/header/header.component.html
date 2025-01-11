@@ -1,32 +1,39 @@
 <mat-toolbar>
-  <div class="nav-item">
-    <a
-      class="nav-button"
-      mat-button
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      #rla="routerLinkActive"
-      href="/"
-      >Photos</a
-    >
-    @if (rla.isActive) {
-    <div class="active-item"></div>
-    }
-  </div>
+    <div class="nav-item">
+        @if (rla.isActive) {
+            <div class="active-item photos">
+            </div>
+        }
+        <a
+        mat-button
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        #rla="routerLinkActive"
+        href="/">
+            <div>
+                <mat-icon>photo_camera</mat-icon>
+                <span> Photos </span> 
+            </div>
+        </a>
+    </div>
 
-  <div class="nav-item">
-    <a
-      class="nav-button"
-      mat-button
-      routerLink="/favorites"
-      routerLinkActive="active"
-      #rlaFav="routerLinkActive"
-      href="/favorites"
-      >Favorites</a
-    >
-    @if (rlaFav.isActive) {
-    <div class="active-item"></div>
-    }
-  </div>
-</mat-toolbar>
+    <div class="nav-item">
+        @if (rlaFav.isActive) {
+            <div class="active-item favorite">
+            </div>
+        }
+        <a
+        mat-button
+        routerLink="/favorites"
+        routerLinkActive="active"
+        #rlaFav="routerLinkActive"
+        href="/favorites">
+            <div>
+                <mat-icon>favorite</mat-icon>
+                <span> Favorites </span> 
+            </div>
+        </a>
+    </div>
+
+  </mat-toolbar>

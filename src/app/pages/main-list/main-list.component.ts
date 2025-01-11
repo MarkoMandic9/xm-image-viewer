@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, Signal } from '@angular/core';
 import { ImageGridComponent } from '../../shared/components/image-grid/image-grid.component';
 import { ImageMetadata } from '../../shared/interface/image-metadata.interface';
 import { MainListService } from './main-list.service';
@@ -10,6 +10,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   imports: [ImageGridComponent],
   templateUrl: './main-list.component.html',
   styleUrl: './main-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainListComponent implements OnInit {
   private mainListService = inject(MainListService);

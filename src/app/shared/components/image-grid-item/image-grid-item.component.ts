@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ImageMetadata } from '../../interface/image-metadata.interface';
 
@@ -8,6 +8,7 @@ import { ImageMetadata } from '../../interface/image-metadata.interface';
   imports: [CommonModule, NgOptimizedImage, MatIconModule],
   templateUrl: './image-grid-item.component.html',
   styleUrl: './image-grid-item.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageGridItemComponent {
   imageData = input<ImageMetadata>();

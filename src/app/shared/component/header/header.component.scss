@@ -1,32 +1,66 @@
 :host {
   mat-toolbar {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      height: 80px;
 
-    > .nav-item {
-      position: relative;
-      flex: 0 1 100px;
+      > .nav-item {
+          position: relative;
+          padding: 16px;
 
-      .nav-button {
-        width: 100%;
-      }
+          a {
+              color: #222;
+              text-decoration: none;
+              z-index: 2;
+              position: relative;
 
-      .active-item {
-        view-transition-name: selected-route;
-        width: 100%;
-        height: 100%;
-        border-radius: var(--mat-sys-corner-full);
-        background-color: color-mix(
-          in srgb,
-          var(--mat-sys-primary) 30%,
-          transparent
-        );
-        position: absolute;
-        left: 0;
-        top: 0;
-        pointer-events: none;
+              > div {
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+              }
+
+          }
+
+          .active-item + a {
+              color: white;
+          }
+
+          .active-item {
+              view-transition-name: selected-route;
+              width: 100%;
+              height: 100%;
+              border-radius: 16px;
+              position: absolute;
+              left: 0;
+              top: 0;
+              pointer-events: none;
+
+              &.favorite {
+                  background-color: rgb(255, 0, 93);
+              }
+
+              &.photos {
+                  background-color: rgb(60, 28, 177);
+              }
+          }
       }
     }
+
+    .active-item {
+      view-transition-name: selected-route;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--mat-sys-corner-full);
+      background-color: color-mix(
+        in srgb,
+        var(--mat-sys-primary) 30%,
+        transparent
+      );
+      position: absolute;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+    }
   }
-}
