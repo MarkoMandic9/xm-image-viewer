@@ -8,12 +8,12 @@ import { FAVORITES_STORAGE_PATH, IMAGE_PAGE_SIZE } from "../../shared/constants"
 
 @Injectable({providedIn: 'root'})
 export class MainListService {
-    private imageMetadataService = inject(ImageMetadataService);
-    private storageService = inject(StorageService);
+    private readonly imageMetadataService = inject(ImageMetadataService);
+    private readonly storageService = inject(StorageService);
 
-    private pageIndex$ = new BehaviorSubject<number>(-1);
+    private readonly pageIndex$ = new BehaviorSubject<number>(-1);
 
-    private imageList = toSignal(this.pageIndex$.pipe(
+    private readonly imageList = toSignal(this.pageIndex$.pipe(
         filter((index) => index >= 0),
         concatMap((index) => this.imageMetadataService.getMetadata(index, IMAGE_PAGE_SIZE)),
         scan((loadedImages, imagePage) => [...loadedImages, ...imagePage]),

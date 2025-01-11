@@ -5,9 +5,9 @@ import { FAVORITES_STORAGE_PATH } from "../../shared/constants";
 
 @Injectable()
 export class FavoritesService {
-    private storageService = inject(StorageService);
+    private readonly storageService = inject(StorageService);
 
-    private favoritesList = signal<ImageMetadata[]>([]);
+    private readonly favoritesList = signal<ImageMetadata[]>([]);
 
     get images(): Signal<ImageMetadata[]> {
         return this.favoritesList.asReadonly();

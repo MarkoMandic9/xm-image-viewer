@@ -8,12 +8,12 @@ import { of, Subject, switchMap } from "rxjs";
 
 @Injectable()
 export class PhotoViewService {
-    private storageService = inject(StorageService);
-    private imageMetadataService = inject(ImageMetadataService);
+    private readonly storageService = inject(StorageService);
+    private readonly imageMetadataService = inject(ImageMetadataService);
 
-    private selectedImageId$ = new Subject<string | undefined>();
+    private readonly selectedImageId$ = new Subject<string | undefined>();
 
-    private selectedImage = toSignal(
+    private readonly selectedImage = toSignal(
         this.selectedImageId$.pipe(
             switchMap((id) => {
                 if (id == null) {
