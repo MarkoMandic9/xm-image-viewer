@@ -1,17 +1,20 @@
 :host {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding-top: 30px;
+    max-height: calc(100% - 64px);
+
    
   .grid-container {
     display: grid;
+    max-height: 100%;
+    overflow-y: auto;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     padding: 16px;
     width: 100%;
-    max-width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+   
   }
   
   .grid-container img {

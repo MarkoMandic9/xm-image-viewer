@@ -14,7 +14,10 @@ export class MainListComponent implements OnInit {
   images: Signal<ImageMetadata[]> = this.mainListService.images;
 
   ngOnInit(): void {
-    console.log("INIT")
+    this.mainListService.loadNextPage();
+  }
+
+  onNextPage(): void{
     this.mainListService.loadNextPage();
   }
 }
