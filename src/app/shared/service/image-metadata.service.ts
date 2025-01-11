@@ -13,7 +13,7 @@ export class ImageMetadataService {
     private http = inject(HttpClient);
 
     getMetadata(pageIndex: number, pageSize: number): Observable<ImageMetadata[]> {
-        return this.http.get<ImageResponse[]>(METADATA_API_PATH, {params: { page: pageIndex, limit: pageSize }}).pipe(
+        return this.http.get<ImageResponse[]>(SERVER_URL + METADATA_API_PATH, {params: { page: pageIndex, limit: pageSize }}).pipe(
             map((response) => response.map(({id, author, download_url: fullUrl}) => ({
                 id,
                 author,
