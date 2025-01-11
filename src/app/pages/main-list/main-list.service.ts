@@ -47,6 +47,11 @@ export class MainListService {
         return new Map(this.images().map((img) => [img.id, img]));
     }
 
+    loadInitialPage(): void {
+        if (this.pageIndex() > 1) return;
+        this.loadNextPage();
+    }
+
     loadNextPage(): void {
         this.incrementPage$.next();
     }

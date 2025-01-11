@@ -13,10 +13,10 @@ import { StorageService } from '../../shared/service/storage.service';
 export class MainListComponent implements OnInit {
   private mainListService = inject(MainListService);
 
-  images: Signal<ImageMetadata[]> = this.mainListService.images;
+  readonly images: Signal<ImageMetadata[]> = this.mainListService.images;
 
   ngOnInit(): void {
-    this.mainListService.loadNextPage();
+    this.mainListService.loadInitialPage();
   }
 
   onNextPage(): void {
