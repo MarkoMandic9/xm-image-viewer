@@ -5,16 +5,17 @@ import { ImageMetadata } from '../interface/image-metadata.interface';
 import { InfiniteScrollDirective } from '../directive/infinite-scroll.directive';
 
 @Component({
-    selector: 'app-image-grid',
-    templateUrl: './image-grid.component.html',
-    imports: [ImageDetailsComponent, CommonModule, InfiniteScrollDirective],
-    styleUrls: ['./image-grid.component.scss']
+  selector: 'app-image-grid',
+  templateUrl: './image-grid.component.html',
+  imports: [ImageDetailsComponent, CommonModule, InfiniteScrollDirective],
+  styleUrls: ['./image-grid.component.scss'],
 })
 export class ImageGridComponent {
-    readonly imagesMetaData = input<ImageMetadata[]>();
-    readonly nextPage = output<void>();
+  readonly imagesMetaData = input<ImageMetadata[]>();
+  readonly nextPage = output<void>();
+  readonly imageClick = output<string>();
 
-    onNextPageLoad(): void {
-        this.nextPage.emit();
-    };
+  onNextPageLoad(): void {
+    this.nextPage.emit();
+  }
 }

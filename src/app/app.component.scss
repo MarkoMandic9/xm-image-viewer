@@ -1,25 +1,30 @@
 :host {
+  display: block;
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 
-  mat-toolbar {
+  .app-wrapper {
+    height: 100%;
     display: flex;
-    justify-content: center;
-    padding: 8px 16px;
-    gap: 16px;
+    flex-direction: column;
 
-    .active {
-      background-color: color-mix(
-        in srgb,
-        var(--mat-sys-primary) 10%,
-        transparent
-      );
+    mat-toolbar {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+
+      .active {
+        background-color: color-mix(
+          in srgb,
+          var(--mat-sys-primary) 10%,
+          transparent
+        );
+      }
     }
-  }
 
-  .router-outlet-wrapper {
-    flex: 1 1;
-    overflow-y: auto;
+    .router-outlet-wrapper {
+      flex: 1 1;
+      overflow: hidden;
+    }
   }
 }
