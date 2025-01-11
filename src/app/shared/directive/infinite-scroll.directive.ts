@@ -1,6 +1,6 @@
 import { Directive, ElementRef, inject } from '@angular/core';
 import { outputFromObservable } from '@angular/core/rxjs-interop';
-import { debounceTime, filter, fromEvent, map } from 'rxjs';
+import { debounceTime, filter, fromEvent, map, tap } from 'rxjs';
 
 const SCROLL_OFFSET = 0.8;
 
@@ -11,10 +11,13 @@ const SCROLL_OFFSET = 0.8;
 export class InfiniteScrollDirective {
     private elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
 
+    private scrolledTriggers = new Set();
+
     readonly infiniteScroll = outputFromObservable(
         fromEvent(this.elementRef.nativeElement, 'scroll').pipe(
             debounceTime(200),
-            filter(() => this.isScrolled),
+            filter(() => this.isScrolled && !this.scrolledTriggers.has(this.scrollHeight)),
+            tap(() => this.scrolledTriggers.add(this.scrollHeight)),
             map(() => true),
         )
     );
