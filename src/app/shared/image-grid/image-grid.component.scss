@@ -1,0 +1,22 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 30px;
+   
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    width: 100%;
+    max-width: 80%;
+  }
+  
+  .grid-container img {
+    width: 200px; 
+    height: 300px; 
+    object-fit: cover;
+}
+}  
