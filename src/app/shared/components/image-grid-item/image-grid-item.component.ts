@@ -11,18 +11,25 @@ import { ImageMetadata } from '../../interface/image-metadata.interface';
 })
 export class ImageGridItemComponent {
   imageData = input<ImageMetadata>();
+  addToFavoritesEnabled = input<boolean>(false);
+
   imageClick = output<string>();
   isFavorite = false;
 
   onImageClick(id: string | undefined): void {
-    console.log(`Image ${id} added to favorites!`);
+    if (this.addToFavoritesEnabled()) {
+      this.toggleIsFavorite();
+    }
+    if (id) {
+      this.imageClick.emit(id);
+    }
+  }
+
+  private toggleIsFavorite(): void {
     this.isFavorite = true;
 
     setTimeout(() => {
       this.isFavorite = false;
     }, 1000);
-    if (id) {
-      this.imageClick.emit(id);
-    }
   }
 }

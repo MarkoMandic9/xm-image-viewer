@@ -1,6 +1,7 @@
 <div class="grid-container" (infiniteScroll)="onNextPageLoad()">
   @for (imageMetaData of imagesMetaData(); track imageMetaData.id) {
   <app-image-grid-item
+    [addToFavoritesEnabled]="addToFavoritesEnabled()"
     [imageData]="imageMetaData"
     (imageClick)="imageClick.emit($event)"
   ></app-image-grid-item>

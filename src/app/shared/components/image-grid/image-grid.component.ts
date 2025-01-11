@@ -12,6 +12,7 @@ import { InfiniteScrollDirective } from '../../directive/infinite-scroll.directi
 })
 export class ImageGridComponent {
   readonly imagesMetaData = input<ImageMetadata[]>();
+  readonly addToFavoritesEnabled = input<boolean>(false);
   readonly nextPage = output<void>();
   readonly imageClick = output<string>();
 
