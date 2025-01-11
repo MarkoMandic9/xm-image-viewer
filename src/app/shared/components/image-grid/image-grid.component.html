@@ -1,6 +1,7 @@
 <div class="grid-container">
   @for (imageMetaData of imagesMetaData(); track imageMetaData.id) {
   <app-image-grid-item
+    [style.view-transition-name]="'img-' + imageMetaData.id"
     [addToFavoritesEnabled]="addToFavoritesEnabled()"
     [imageData]="imageMetaData"
     (imageClick)="imageClick.emit($event)"

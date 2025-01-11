@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { ImageGridItemComponent } from '../image-grid-item/image-grid-item.component';
 import { CommonModule } from '@angular/common';
 import { ImageMetadata } from '../../interface/image-metadata.interface';
