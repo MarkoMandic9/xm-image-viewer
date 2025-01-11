@@ -1,8 +1,8 @@
 <div class="grid-container" (infiniteScroll)="onNextPageLoad()">
   @for (imageMetaData of imagesMetaData(); track imageMetaData.id) {
-  <app-image-details
+  <app-image-grid-item
     [imageData]="imageMetaData"
     (imageClick)="imageClick.emit($event)"
-  ></app-image-details>
+  ></app-image-grid-item>
   } @empty { There are no items. }
 </div>
