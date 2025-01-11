@@ -1,1 +1,20 @@
-<router-outlet></router-outlet>
+<mat-toolbar>
+  <a
+    mat-button
+    routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Photos</a
+  >
+  <a
+    mat-button
+    routerLink="favorites"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Favorites</a
+  >
+</mat-toolbar>
+
+<div class="router-outlet-wrapper">
+  <router-outlet></router-outlet>
+</div>

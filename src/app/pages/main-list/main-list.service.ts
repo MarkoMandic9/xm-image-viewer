@@ -13,6 +13,7 @@ export class MainListService {
 
     private pageIndex$ = new BehaviorSubject<number>(-1);
 
+
     private imageList = toSignal(this.pageIndex$.pipe(
         filter((index) => index >= 0),
         concatMap((index) => this.imageMetadataService.getMetadata(index, IMAGE_PAGE_SIZE)),
