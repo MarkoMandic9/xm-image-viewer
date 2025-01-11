@@ -29,7 +29,6 @@ export class PhotoViewService {
                 return this.imageMetadataService.getImageData(id);
             }),
         )
-        
     );
 
     get image(): Signal<ImageMetadata | undefined> {
