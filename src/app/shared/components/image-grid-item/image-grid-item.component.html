@@ -1,8 +1,8 @@
 <div class="image-wrapper" (click)="onImageClick(imageData()?.id)">
   <img
     [ngSrc]="'https://picsum.photos/id/' + imageData()?.id + '/200/300'"
-    [width]="200"
-    [height]="300"
+    [width]="400"
+    [height]="600"
     alt="Optimized Image"
     [priority]="imageData()?.id"
   />

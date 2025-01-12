@@ -1,9 +1,16 @@
 :host {
+  $itemsInRow: 3;
+  $itemWidth: 400px;
+
   .grid-container {
     display: grid;
-    grid: auto-flow 300px / repeat(auto-fill, 200px);
+    grid: auto-flow 600px / repeat(auto-fill, #{$itemWidth});
     align-items: stretch;
     justify-content: center;
+    gap: 8px;
+
+    max-width: $itemsInRow * $itemWidth + 16px;
+    margin: auto;
   }
 
   .loading-container {

@@ -1,7 +1,7 @@
 @if (!loading() && imagesMetaData()?.length === 0){
 <app-no-elements-panel>
 </app-no-elements-panel>
-} @else {
+} @else {`
 <div class="grid-container">
   @for (imageMetaData of imagesMetaData(); track imageMetaData.id) {
   <app-image-grid-item [style.view-transition-name]="'img-' + imageMetaData.id"

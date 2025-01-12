@@ -33,7 +33,7 @@ export class ImageMetadataService {
   }
 
   private getListUrlForId(id: string): string {
-    return SERVER_URL + `/id/${id}/200/300.webp`;
+    return SERVER_URL + `/id/${id}/400/600.webp`;
   }
 
   private getInfoUrlForId(id: string): string {
