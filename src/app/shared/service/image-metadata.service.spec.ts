@@ -1,8 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ImageMetadataService } from './image-metadata.service';
 import { ImageResponse } from '../interface/image-reponse.interface';
 import { ImageMetadata } from '../interface/image-metadata.interface';
+import { provideHttpClient } from '@angular/common/http';
 
 const SERVER_URL = 'https://picsum.photos';
 const METADATA_API_PATH = '/v2/list';
@@ -13,8 +14,7 @@ describe('ImageMetadataService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ImageMetadataService],
+      providers: [ImageMetadataService, provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(ImageMetadataService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -48,13 +48,13 @@ describe('ImageMetadataService', () => {
           id: '1',
           author: 'Author 1',
           fullUrl: 'https://example.com/image1.jpg',
-          listUrl: `${SERVER_URL}/id/1/200/300.webp`,
+          listUrl: `${SERVER_URL}/id/1/400/600.webp`,
         },
         {
           id: '2',
           author: 'Author 2',
           fullUrl: 'https://example.com/image2.jpg',
-          listUrl: `${SERVER_URL}/id/2/200/300.webp`,
+          listUrl: `${SERVER_URL}/id/2/400/600.webp`,
         },
       ];
 
@@ -80,7 +80,7 @@ describe('ImageMetadataService', () => {
         id: '1',
         author: 'Author 1',
         fullUrl: 'https://example.com/image1.jpg',
-        listUrl: `${SERVER_URL}/id/1/200/300.webp`,
+        listUrl: `${SERVER_URL}/id/1/400/600.webp`,
       };
 
       service.getImageData('1').subscribe((metadata) => {
