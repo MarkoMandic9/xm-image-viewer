@@ -12,7 +12,7 @@ export const routes: Routes = [
     title: 'Favorites',
   },
   {
-    path: 'favorites/:id',
+    path: 'photos/:id',
     loadComponent: () =>
       import('./pages/photo-view/photo-view.component').then(
         (m) => m.PhotoViewComponent

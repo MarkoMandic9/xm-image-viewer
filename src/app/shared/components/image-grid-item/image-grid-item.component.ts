@@ -11,10 +11,10 @@ import { ImageMetadata } from '../../interface/image-metadata.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageGridItemComponent {
-  imageData = input<ImageMetadata>();
-  addToFavoritesEnabled = input<boolean>(false);
+  readonly imageData = input<ImageMetadata>();
+  readonly addToFavoritesEnabled = input<boolean>(false);
 
-  imageClick = output<string>();
+  readonly imageClick = output<string>();
   isFavorite = false;
 
   onImageClick(id: string | undefined): void {

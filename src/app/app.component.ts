@@ -8,5 +8,4 @@ import { HeaderComponent } from "./shared/component/header/header.component";
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'xm-image-viewer';
 }

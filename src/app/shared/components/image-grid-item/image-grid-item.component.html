@@ -6,10 +6,12 @@
     alt="Optimized Image"
     [priority]="imageData()?.id"
   />
-  <mat-icon
-    *ngIf="addToFavoritesEnabled() && isFavorite"
-    [class.animate]="isFavorite"
-    class="favorite-icon"
-    >favorite</mat-icon
-  >
+  @if (addToFavoritesEnabled() && isFavorite) {
+    <mat-icon
+      [class.animate]="isFavorite"
+      class="favorite-icon"
+      >favorite</mat-icon
+    >
+  }
+
 </div>
