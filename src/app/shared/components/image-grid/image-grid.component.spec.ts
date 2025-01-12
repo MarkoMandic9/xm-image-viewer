@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ImageGridComponent } from './image-grid.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { By } from '@angular/platform-browser';
 import { Component, input, output } from '@angular/core';
+import { ImageGridComponent } from '../../component/image-grid/image-grid.component';
 
 @Component({
   selector: 'app-image-grid-item',
