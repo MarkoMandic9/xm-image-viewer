@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FavoritesService } from './favorites.service';
-import { ImageGridComponent } from '../../shared/components/image-grid/image-grid.component';
+import { ImageGridComponent } from '../../shared/component/image-grid/image-grid.component';
 import { Router } from '@angular/router';
 
 @Component({

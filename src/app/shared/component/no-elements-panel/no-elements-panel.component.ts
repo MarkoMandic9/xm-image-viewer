@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input, output, Input } from "@angular/core";
+import { Component, ChangeDetectionStrategy, Input } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 

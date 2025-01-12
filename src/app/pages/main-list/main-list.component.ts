@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, Signal } from '@angular/core';
-import { ImageGridComponent } from '../../shared/components/image-grid/image-grid.component';
+import { ImageGridComponent } from '../../shared/component/image-grid/image-grid.component';
 import { ImageMetadata } from '../../shared/interface/image-metadata.interface';
 import { MainListService } from './main-list.service';
 import { PageScrollService } from '../../shared/service/page-scroll.service';
