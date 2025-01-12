@@ -1,11 +1,11 @@
-import { ElementRef, inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { debounceTime, filter, fromEvent, map, tap } from 'rxjs';
 
 const SCROLL_OFFSET = 0.8;
 
 @Injectable({ providedIn: 'root' })
 export class PageScrollService {
-    private readonly scrolledTriggers = new Set();
+    private readonly scrolledTriggers = new Set<number>();
 
     readonly pageScroll$ = fromEvent(document, 'scroll').pipe(
         debounceTime(200),

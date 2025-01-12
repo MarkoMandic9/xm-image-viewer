@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, Signal 
 import { ImageGridComponent } from '../../shared/components/image-grid/image-grid.component';
 import { ImageMetadata } from '../../shared/interface/image-metadata.interface';
 import { MainListService } from './main-list.service';
-import { PageScrollService } from '../../shared/directive/page-scroll.service';
+import { PageScrollService } from '../../shared/service/page-scroll.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
